@@ -1,21 +1,29 @@
-import React from 'react'
+/* 
+    Yorumların kontrolü ile birlikte, çıkacak olan bilgilendirme 
+    kontrol eden component.
+*/
 
-function Comment({comments , vote ,commentValue}) {
+
+import React from 'react'
+import ReactStars from "react-rating-stars-component";
+import "../../App.css"
+
+function Comment({comments}) {
     return (
         <div>
             {
 
                 comments.length === 0 ? <h5>Henüz hiç yorum yok</h5> :
                
-                comments.map(comment  => (<h3 key = {comment.vote}> Comment : {comment.text} , Vote : {comment.vote} </h3>))
+                comments.map(comment  => (<h3 className = "comment" key = {comment.vote}>{comment.text}  <ReactStars classNames = "starts" edit = {false} value = {comment.vote}></ReactStars> </h3>))
                 
-                // <h5>Yıldız = {comments.vote} Comment = {comments.title}</h5>
+                
             }
       
             
             
         </div>
-    )
+    ) 
 }
 
 export default Comment
